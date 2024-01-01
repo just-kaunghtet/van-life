@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams, Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
 import { getVan } from "../../api"
 import { requireAuth } from "../../utils"
 

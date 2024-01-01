@@ -23,7 +23,6 @@ import Login, { loader as loginLoader, action as loginAction } from "./pages/Log
 import Layout from "./components/Layout"
 import HostLayout from "./components/HostLayout"
 import Error from "./components/Error"
-import { requireAuth } from "./utils"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>

@@ -6,8 +6,8 @@ import {
   createRoutesFromElements,
   Route
 } from "react-router-dom"
-import Home from "./pages/Home"
-import About from "./pages/About"
+import Home from "./Home"
+import About from "./About"
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans"
 import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail"
 import Dashboard, { loader as dashboardLoader } from "./pages/Host/Dashboard"

@@ -1,9 +1,15 @@
 import React from "react"
-import { useParams, Link, NavLink, Outlet } from "react-router-dom"
+import { useParams, Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
+import { getVan } from "../../api"
+import { requireAuth } from "../../utils"
+
+export async function loader({ params, request }) {
+    await requireAuth(request)
+    return getVan(params.id)
+}
 
 export default function HostVanDetail() {
-    const { id } = useParams()
-    const [currentVan, setCurrentVan] = React.useState(null)
+    const currentVan = useLoaderData()
 
     const activeStyles = {
         fontWeight: "bold",
@@ -11,15 +17,6 @@ export default function HostVanDetail() {
         color: "#161616"
     }
 
-    React.useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => setCurrentVan(data.vans))
-    }, [id])
-
-    if (!currentVan) {
-        return <h1>Loading...</h1>
-    }
     return (
         <section>
             <Link
@@ -30,7 +27,7 @@ export default function HostVanDetail() {
 
             <div className="host-van-detail-layout-container">
                 <div className="host-van-detail">
-                    <img src={currentVan.imageUrl} alt="" />
+                    <img src={currentVan.imageUrl} />
                     <div className="host-van-detail-info-text">
                         <i
                             className={`van-type van-type-${currentVan.type}`}
@@ -63,7 +60,7 @@ export default function HostVanDetail() {
                         Photos
                     </NavLink>
                 </nav>
-                <Outlet />
+                <Outlet context={{ currentVan }} />
             </div>
         </section>
     )

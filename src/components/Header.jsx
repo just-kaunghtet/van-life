@@ -38,6 +38,7 @@ export default function Header() {
                     <img 
                         src="../assets/images/avatar-icon.png" 
                         className="login-icon"
+                        alt=""
                     />
                 </Link>
                 <button onClick={fakeLogOut}>X</button>

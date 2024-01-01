@@ -13,9 +13,9 @@ export function loader({ request }) {
 }
 
 export async function action({ request }) {
-    const formData = await request.formData()
-    const email = formData.get("email")
-    const password = formData.get("password")
+    //const formData = await request.formData()
+    //const email = formData.get("email")
+    //const password = formData.get("password")
     const pathname = new URL(request.url)
         .searchParams.get("redirectTo") || "/host"
     
